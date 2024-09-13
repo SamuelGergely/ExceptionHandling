@@ -2,7 +2,7 @@
 class EmailValidationError extends Error {
     constructor(message) {
         super(message);  // Appelle le constructeur de la classe parent (Error)
-        //TODO
+        this.name = 'EmailValidationError';
     }
 }
 
@@ -12,7 +12,7 @@ function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
-        //TODO
+        throw new EmailValidationError("Invalid email");
     }
     return "Adresse e-mail valide.";
 }
@@ -21,10 +21,10 @@ function validateEmail(email) {
 try {
     let result;
 
-    result = validateEmail("valid@email.com");  // Change l'e-mail pour tester différents scénarios
+    result = validateEmail("samuel.gergely@eduvaud.ch");  // Change l'e-mail pour tester différents scénarios
     console.log(result);
 
-    result = validateEmail("invalid-email");  // Change l'e-mail pour tester différents scénarios
+    result = validateEmail("amaeljampen#eduvaud.ch");  // Change l'e-mail pour tester différents scénarios
     console.log(result);
 
 } catch (error) {
